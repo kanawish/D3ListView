@@ -1,13 +1,21 @@
 package com.district3.d3listview;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
 public class MainActivity extends Activity {
+
+    String[] valuesArray = new String[] { "Alice", "Bob", "Charles" };
+
+    // This is the Adapter being used to display the list's data
+    ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +25,8 @@ public class MainActivity extends Activity {
         // http://developer.android.com/guide/topics/ui/layout/listview.html
         ListView listView = (ListView) findViewById(R.id.listView);
 
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, valuesArray);
+        listView.setAdapter(adapter);
     }
 
     @Override
